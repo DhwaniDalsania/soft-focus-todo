@@ -70,7 +70,7 @@ function App() {
           <div className="relative image1">
             <div className="absolute -top-16 -right-16 w-32 h-32 bg-rose-200/40 blur-lg rounded-full"></div>
             <img
-              src="src\\assets\\1.png"
+              src="images/1.png"
               alt="decoration"
               className="w-32 h-32 absolute -top-16 -right-16 opacity-80"
             />
@@ -79,7 +79,7 @@ function App() {
           <div className="relative image2">
             <div className="absolute top-120 -left-16 w-22 h-22 bg-rose-200/40 blur-lg rounded-full"></div>
             <img
-              src="/src/assets/2.png"
+              src="images/2.png"
               alt="decoration"
               className="w-52 h-52 absolute top-115 -left-28 opacity-100"
             />
