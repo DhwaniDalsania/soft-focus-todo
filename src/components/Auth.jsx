@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Auth = ({ onLogin, initialIsSignup = false }) => {
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL;
   const [isSignup, setIsSignup] = useState(initialIsSignup);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

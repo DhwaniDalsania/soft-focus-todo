@@ -4,7 +4,7 @@ import "./App.css";
 import Auth from "./components/Auth";
 
 function App() {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL;
   const [currentTodo, setCurrentTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [view, setView] = useState("todo");

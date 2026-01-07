@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const TodoList = ({ token, onLogout }) => {
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL;
   const [currentTodo, setCurrentTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
 
