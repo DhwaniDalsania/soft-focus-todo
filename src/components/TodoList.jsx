@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const TodoList = ({ token, onLogout }) => {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   const [currentTodo, setCurrentTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
 
@@ -11,7 +12,7 @@ const TodoList = ({ token, onLogout }) => {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/todos', {
+      const response = await axios.get(`${API_URL}/api/todos`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTodoList(response.data);
@@ -25,7 +26,7 @@ const TodoList = ({ token, onLogout }) => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/todos',
+        `${API_URL}/api/todos`,
         { text: currentTodo },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -38,7 +39,7 @@ const TodoList = ({ token, onLogout }) => {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${id}`, {
+      await axios.delete(`${API_URL}/api/todos/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTodoList(todoList.filter((todo) => todo._id !== id));
@@ -58,7 +59,7 @@ const TodoList = ({ token, onLogout }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/todos/${id}`,
+        `${API_URL}/api/todos/${id}`,
         { text: todo.text, completed: !todo.completed },
         { headers: { Authorization: `Bearer ${token}` } }
       );

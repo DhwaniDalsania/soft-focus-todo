@@ -4,6 +4,7 @@ import "./App.css";
 import Auth from "./components/Auth";
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const [currentTodo, setCurrentTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [view, setView] = useState("todo");
@@ -24,7 +25,7 @@ function App() {
 
   const fetchTodos = async (authToken) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/todos", {
+      const res = await axios.get(`${API_URL}/api/todos`, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
       // Map backend format to frontend format
@@ -46,7 +47,7 @@ function App() {
 
   const fetchUser = async (authToken) => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auth/me", {
+      const res = await axios.get(`${API_URL}/api/auth/me`, {
         headers: { Authorization: `Bearer ${authToken}` }
       });
       setUser(res.data);
@@ -83,7 +84,7 @@ function App() {
     } else {
       axios
         .post(
-          "http://localhost:5000/api/todos",
+          `${API_URL}/api/todos`,
           { text: currentTodo },
           { headers: { Authorization: `Bearer ${token}` } }
         )
@@ -105,7 +106,7 @@ function App() {
   const deleteTodo = (idx) => {
     const itemToDelete = todoList[idx];
     if (token && itemToDelete._id) {
-      axios.delete(`http://localhost:5000/api/todos/${itemToDelete._id}`, {
+      axios.delete(`${API_URL}/api/todos/${itemToDelete._id}`, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => console.error(err));
     }
@@ -125,7 +126,7 @@ function App() {
         const updatedItem = { ...item, isCompleted: !item.isCompleted };
 
         if (token && item._id) {
-          axios.put(`http://localhost:5000/api/todos/${item._id}`,
+          axios.put(`${API_URL}/api/todos/${item._id}`,
             { text: item.todo, completed: updatedItem.isCompleted },
             { headers: { Authorization: `Bearer ${token}` } }
           ).catch(err => console.error(err));
