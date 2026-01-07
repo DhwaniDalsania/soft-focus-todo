@@ -80,7 +80,10 @@ const Auth = ({ onLogin, initialIsSignup = false }) => {
             shadow-inner shadow-white/40
           "
         />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <p className="text-red-500">
+          {typeof error === "string" ? error : error?.message}
+        </p>
+
         <button
           type="submit"
           className="
