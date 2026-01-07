@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const TodoList = ({ token, onLogout }) => {
-  const API_URL = import.meta.env.VITE_API_URL;
   const [currentTodo, setCurrentTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
 

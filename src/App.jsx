@@ -2,12 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import Auth from "./components/Auth";
+import { API_URL } from "./config";
 
 function App() {
-  const API_URL = import.meta.env.VITE_API_URL;
   const [currentTodo, setCurrentTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [view, setView] = useState("todo");
+
+  useEffect(() => {
+    console.log("App using API_URL:", API_URL);
+  }, []);
+
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(() => {
     try {
